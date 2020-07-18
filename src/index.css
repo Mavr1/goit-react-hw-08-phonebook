@@ -1,0 +1,24 @@
+body {
+  background-color: antiquewhite;
+}
+
+input {
+  display: block;
+  margin: 8px 0;
+}
+
+.btnDelete {
+  width: 40px;
+  height: 15px;
+  font-size: 8px;
+  vertical-align: top;
+}
+
+.contactName,
+.contactNumber {
+  margin-right: 10px;
+}
+
+.switch {
+  float: right;
+}
