@@ -1,0 +1,25 @@
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.headerContainer {
+  display: grid;
+  grid-template-rows: 40px;
+  grid-template-columns: 1fr 1fr 2fr 3fr;
+}
+
+.authMenu {
+  display: flex;
+  align-items: flex-start;
+}
+
+.authMenuItem:not(:last-child) {
+  margin-right: 6px;
+}
+
+.authMenuItem,
+.navMenuItem {
+  line-height: 38px;
+}
