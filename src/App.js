@@ -1,7 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Switch } from 'react-router-dom';
 import Header from './components/header/Header';
-import PhonebookPage from './pages/PhonebookPage';
+import PrivateRoute from './components/privateRoute/PrivateRoute';
+import PublicRoute from './components/publicRoute/PublicRoute';
+import routes from './routes';
 import themeSelectors from './redux/theme/themeSelectors';
 import styles from './App.module.css';
 
@@ -15,7 +18,15 @@ const App = () => {
       className={currentTheme === 'light' ? styles.AppLight : styles.AppDark}
     >
       <Header />
-      <PhonebookPage />
+      <Switch>
+        {routes.map((route) =>
+          route.private ? (
+            <PrivateRoute key={route.label} {...route} />
+          ) : (
+            <PublicRoute key={route.label} {...route} />
+          )
+        )}
+      </Switch>
     </div>
   );
 };
