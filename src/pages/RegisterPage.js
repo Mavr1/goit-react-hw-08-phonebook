@@ -6,7 +6,11 @@ const RegisterPage = () => {
   return (
     <>
       <h2>Register</h2>
-      <Authform buttonName={'Sign up'} authRequest={register} />
+      <Authform
+        formType={'register'}
+        buttonName={'Sign up'}
+        authRequest={register}
+      />
     </>
   );
 };

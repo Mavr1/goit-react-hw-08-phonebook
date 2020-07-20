@@ -5,19 +5,24 @@ import themeSelectors from '../../redux/theme/themeSelectors';
 import themeSlice from '../../redux/theme/themeSlice';
 
 class SwitchOne extends Component {
-  state = { checked: true };
+  state = { checked: null };
 
   componentDidMount() {
-    const parsedTheme = JSON.parse(localStorage.getItem('persist:root'));
+    const parsedTheme = JSON.parse(localStorage.getItem('persist:theme'));
     if (parsedTheme !== null) {
-      JSON.parse(parsedTheme.theme).currentTheme === 'light'
+      const theme = JSON.parse(parsedTheme.currentTheme);
+      theme === 'light'
         ? this.setState({ checked: true })
         : this.setState({ checked: false });
+    } else {
+      this.setState({ checked: true });
     }
   }
 
   componentDidUpdate(prevProps, prevState) {
-    prevState.checked !== this.state.checked && this.props.toggleTheme();
+    prevState.checked !== null &&
+      prevState.checked !== this.state.checked &&
+      this.props.toggleTheme();
   }
 
   handleChange = () => {

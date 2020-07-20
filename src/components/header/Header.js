@@ -1,10 +1,13 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Switches from '../switch/Switch';
 import UserMenu from '../userMenu/UserMenu';
+import authSelectors from '../../redux/auth/authSelectors';
 import styles from './Header.module.css';
-import { Link } from 'react-router-dom';
 
 const Header = () => {
+  const isAuthenticated = useSelector((state) => authSelectors.getAuth(state));
   return (
     <header>
       <div className={styles.headerContainer}>
@@ -27,7 +30,7 @@ const Header = () => {
           </li>
         </ul>
         <Switches />
-        <UserMenu />
+        {isAuthenticated && <UserMenu />}
       </div>
     </header>
   );

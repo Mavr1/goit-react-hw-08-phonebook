@@ -41,20 +41,21 @@ export const logOut = () => (dispatch) => {
     .finally(dispatch(themeSlice.actions.setLoadingFalse()));
 };
 
-// export const getCurrentUser = () => (dispatch, getState) => {
-//   const {
-//     auth: { token: persistedToken },
-//   } = getState();
+export const getCurrentUser = () => (dispatch, getState) => {
+  const {
+    auth: { token: persistedToken },
+  } = getState();
 
-//   if (!persistedToken) {
-//     return;
-//   }
+  if (!persistedToken) {
+    return;
+  }
 
-//   token.set(persistedToken);
-//   dispatch(authActions.getCurrentUserRequest());
+  api.token.set(persistedToken);
 
-//   axios
-//     .get('/users/current')
-//     .then(({ data }) => dispatch(authActions.getCurrentUserSuccess(data)))
-//     .catch(error => authActions.getCurrentUserError(error));
-// };
+  dispatch(themeSlice.actions.setLoadingTrue());
+  api
+    .getCurrentUser()
+    .then(({ data }) => dispatch(authSlice.actions.getCurrentUserSuccess(data)))
+    .catch((error) => dispatch(authSlice.actions.getCurrentUserError(error)))
+    .finally(dispatch(themeSlice.actions.setLoadingFalse()));
+};

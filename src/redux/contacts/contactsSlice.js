@@ -25,9 +25,9 @@ export default createSlice({
       list: [...state.list, action.payload],
     }),
 
-    addContactFailure: (state, action) => ({
+    addContactFailure: (state, { payload }) => ({
       ...state,
-      error: action.payload.error,
+      error: payload.message,
     }),
 
     deleteContactSuccess: (state, action) => ({

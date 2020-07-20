@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import Input from '../input/Input';
 import Button from '../button/Button';
 
-const Authform = ({ buttonName, authRequest }) => {
+const Authform = ({ buttonName, authRequest, formType }) => {
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -27,12 +27,14 @@ const Authform = ({ buttonName, authRequest }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Input
-        value={name}
-        label="Name"
-        name="userName"
-        onChange={handleInputName}
-      />
+      {formType === 'register' && (
+        <Input
+          value={name}
+          label="Name"
+          name="userName"
+          onChange={handleInputName}
+        />
+      )}
       <Input
         value={email}
         label="Email"

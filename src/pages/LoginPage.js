@@ -6,7 +6,7 @@ const LoginPage = () => {
   return (
     <>
       <h2>Log in</h2>
-      <Authform buttonName={'Log in'} authRequest={login} />
+      <Authform formType={'login'} buttonName={'Log in'} authRequest={login} />
     </>
   );
 };

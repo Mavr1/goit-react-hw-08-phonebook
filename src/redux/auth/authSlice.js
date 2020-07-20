@@ -12,19 +12,28 @@ export default createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    // getCurrentUserRequest,
-    // getCurrentUserSuccess,
-    // getCurrentUserError,
+    getCurrentUserSuccess: (state, { payload }) => ({
+      ...state,
+      userName: payload.name,
+      userEmail: payload.email,
+      isAuthenticated: true,
+    }),
 
-    registerSuccess: (state, { payload }) => {
+    getCurrentUserError: (state, { payload }) => {
+      // console.log('payload :>> ', payload);
       return {
         ...state,
-        userName: payload.user.name,
-        userEmail: payload.user.email,
-        token: payload.token,
-        isAuthenticated: true,
+        error: payload.message,
       };
     },
+
+    registerSuccess: (state, { payload }) => ({
+      ...state,
+      userName: payload.user.name,
+      userEmail: payload.user.email,
+      token: payload.token,
+      isAuthenticated: true,
+    }),
 
     registerError: (state, { payload }) => ({
       ...state,
