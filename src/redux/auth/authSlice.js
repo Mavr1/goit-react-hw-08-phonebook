@@ -2,8 +2,10 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   userName: '',
+  userEmail: '',
   token: '',
-  isAuthenticated: false,
+  isAuthenticated: true,
+  error: null,
 };
 
 export default createSlice({
@@ -14,12 +16,15 @@ export default createSlice({
     // getCurrentUserSuccess,
     // getCurrentUserError,
 
-    registerSuccess: (state, action) => ({
-      ...state,
-      userName: action.payload.name,
-      token: action.payload.token,
-      isAuthenticated: true,
-    }),
+    registerSuccess: (state, { payload }) => {
+      return {
+        ...state,
+        userName: payload.user.name,
+        userEmail: payload.user.email,
+        token: payload.token,
+        isAuthenticated: true,
+      };
+    },
 
     registerError: (state, action) => ({
       ...state,
@@ -35,10 +40,11 @@ export default createSlice({
       error: action.payload.error,
     }),
 
-    loginSuccess: (state, action) => ({
+    loginSuccess: (state, { payload }) => ({
       ...state,
-      userName: action.payload.name,
-      token: action.payload.token,
+      userName: payload.user.name,
+      userEmail: payload.user.email,
+      token: payload.token,
       isAuthenticated: true,
     }),
 
