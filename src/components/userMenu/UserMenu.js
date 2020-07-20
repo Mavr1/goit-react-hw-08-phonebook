@@ -1,7 +1,11 @@
 import React from 'react';
 import styles from './UserMenu.module.css';
+import { useDispatch } from 'react-redux';
+import { logOut } from '../../redux/auth/authOperations';
 
 const UserMenu = () => {
+  const dispatch = useDispatch();
+  const handleLogout = () => dispatch(logOut());
   return (
     <div className={styles.userMenu}>
       <img
@@ -11,7 +15,9 @@ const UserMenu = () => {
         alt="userpic"
       />
       <span>Hello, User</span>
-      <button type="button">Log out</button>
+      <button type="button" onClick={handleLogout}>
+        Log out
+      </button>
     </div>
   );
 };

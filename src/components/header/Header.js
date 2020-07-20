@@ -14,7 +14,7 @@ const Header = () => {
               <Link to="/">Home</Link>
             </li>
             <li className={styles.navMenuItem}>
-              <Link to="/contacts">Contacts</Link>
+              <Link to="/contacts">Phonebook</Link>
             </li>
           </ul>
         </nav>

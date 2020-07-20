@@ -4,7 +4,7 @@ const initialState = {
   userName: '',
   userEmail: '',
   token: '',
-  isAuthenticated: true,
+  isAuthenticated: false,
   error: null,
 };
 
@@ -26,18 +26,18 @@ export default createSlice({
       };
     },
 
-    registerError: (state, action) => ({
+    registerError: (state, { payload }) => ({
       ...state,
-      error: action.payload.error,
+      error: payload.message,
     }),
 
     logoutSuccess: () => ({
       ...initialState,
     }),
 
-    logoutError: (state, action) => ({
+    logoutError: (state, { payload }) => ({
       ...state,
-      error: action.payload.error,
+      error: payload.message,
     }),
 
     loginSuccess: (state, { payload }) => ({
@@ -51,6 +51,11 @@ export default createSlice({
     loginError: (state, action) => ({
       ...state,
       error: action.payload.error,
+    }),
+
+    setErrorNull: (state) => ({
+      ...state,
+      error: null,
     }),
   },
 });
