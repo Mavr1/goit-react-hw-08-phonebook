@@ -29,6 +29,7 @@ const Authform = ({ buttonName, authRequest, formType }) => {
     <form onSubmit={handleSubmit}>
       {formType === 'register' && (
         <Input
+          type="text"
           value={name}
           label="Name"
           name="userName"
@@ -36,12 +37,14 @@ const Authform = ({ buttonName, authRequest, formType }) => {
         />
       )}
       <Input
+        type="email"
         value={email}
         label="Email"
         name="userEmail"
         onChange={handleInputEmail}
       />
       <Input
+        type="password"
         value={password}
         label="Password"
         name="password"

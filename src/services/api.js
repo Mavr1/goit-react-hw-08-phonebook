@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://lpj-tasker.herokuapp.com';
+axios.defaults.baseURL = 'https://goit-phonebook-api.herokuapp.com/';
 
 const getAllContacts = () => axios.get('/contacts');
 
